@@ -1,72 +1,104 @@
-const form = document.getElementById('form');
-const username = document.getElementById('name');
-const email = document.getElementById('email');
-const password1 = document.getElementById('password1');
-const password2 = document.getElementById('password2');
+// variable input
 
-form.addEventListener('submit', e => {
-    // e.preventDefault();
+    const username = document.getElementById('name');
+    const email = document.getElementById('email');
+    const password1 = document.getElementById('password1');
+    const password2 = document.getElementById('password2');
 
-    validateInputs();
-});
+// variable span 
+    const nameError=document.getElementById('name-error');
+    const emailError=document.getElementById('email-error');
+    const passwordError1=document.getElementById('password1-error');
+    const passwordError2=document.getElementById('password2-error');
+    // const passError=document.getElementById('password1-error').value;
+function validName(){
 
-const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
+    const re= /^\w{5,12}$/;
 
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
+    if(username.value.length==0){
+        nameError.innerHTML ='name is required';
+        document.getElementById('name').classList.remove('is-valid');
+        return false;
+    }
+    if(!username.value.match(re)){
+        nameError.innerHTML='not valid';
+        document.getElementById('name').classList.remove('is-valid');
+        return false;
+    }
+    document.getElementById('name').classList.add('is-valid');
+    nameError.innerHTML='';
+    return true;
+}
+function validEmail(){
+    const RegEmail= /^([a-z\d\.-]+)@([a-z\d-]+).([a-z]{2,8})(\.[a-z]{2,8})?$/;
+    if(email.value.length==0){
+        emailError.innerHTML='should to write your email';
+        document.getElementById('email').classList.remove('is-valid');
+        return false;
+    }
+    if(!email.value.match(RegEmail)){
+        emailError.innerHTML='not valid';
+        document.getElementById('email').classList.remove('is-valid');
+        return false;
+    }
+    document.getElementById('email').classList.add('is-valid');
+    emailError.innerHTML='';
+    return true;
+}
+function validPassword1(){
+   validPassword2();
+
+    const RegPassword=/^[\w@-]{8,20}$/ ;
+    if(password1.value.length==0){
+        passwordError1.innerHTML='should to write your password';
+        document.getElementById('password1').classList.remove('is-valid');
+        return false;
+    }
+    if(!password1.value.match(RegPassword)){
+        passwordError1.innerHTML='password valid';
+        password1.classList.remove('is-valid');
+        return false;
+    }
+    password1.classList.add('is-valid');
+    passwordError1.innerHTML='';
+    return true;
+}
+function validPassword2(){
+    if(password2.value.length==0) {
+        passwordError2.innerHTML='please confirm your pasword';
+        document.getElementById('password2').classList.remove('is-valid');
+        return false;
+    }
+    if(password1.value !== password2.value){ 
+        passwordError2.innerHTML="Passwords doesn't match";
+        password2.classList.add('is-invalid');
+        return false;
+
+    }
+    password2.classList.remove('is-invalid');
+    password2.classList.add('is-valid');
+    passwordError2.innerHTML='';
+    return true;
+    
+
+
 }
 
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
 
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
-};
+const validateForm = () => {
+   
+if(validName() ){
+    if(validEmail() ){
+        if(validPassword1()){
+            if(validPassword2()){
+                document.getElementById('register').click();
+                
+            }
+        } 
+    }
 
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
 }
-
-const validateInputs = () => {
-    const usernameValue = username.value.trim();
-    const emailValue = email.value.trim();
-    const password1Value = password1.value.trim();
-    const password2Value = password2.value.trim();
-
-    if(usernameValue === '') {
-        setError(username, 'Username is required');
-    } else {
-        setSuccess(username);
-    }
-
-    if(emailValue === '') {
-        setError(email, 'Email is required');
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
-    } else {
-        setSuccess(email);
-    }
-
-    if(password1Value === '') {
-        setError(password1, 'Password is required');
-    } else if (password1Value.length < 8 ) {
-        setError(password1, 'Password must be at least 8 character.')
-    } else {
-        setSuccess(password1);
-    }
-
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
-    } else if (password2Value !== password1Value) {
-        setError(password2, "Passwords doesn't match");
-    } else {
-        setSuccess(password2);
-    }
+   
+   
 
 };

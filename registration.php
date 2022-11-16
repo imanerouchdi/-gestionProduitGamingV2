@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
 include 'config.php';
 session_start();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['register'])){
     $name=mysqli_real_escape_string($conn,$_POST['name']);//echape caractere spaciaux
     $email=mysqli_real_escape_string($conn,$_POST['email']);//echape caractere spaciaux
     $password1=$_POST['password1'];
@@ -109,12 +109,13 @@ if(isset($_POST['submit'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <script defer src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styleRegistration.css">
-    <script defer src="assets/js/script.js"></script>
 </head>
 <body>
     <div class="container">
-        <form id="form"  method="POST" >
+        <form id="form"  method="Post"  action="">
             <h1>Registration</h1>
             <?php
             if(isset($error)){
@@ -124,28 +125,32 @@ if(isset($_POST['submit'])){
             }  
 
             ?>
-            <div class="input-control">
+            <div class="input-control  ">
                 <label for="username">Username</label>
-                <input id="name" name="name" type="text"  placeholder="enter your name">
-                <div class="error"></div>
+                <input  id="name" name="name" type="text" class='form-control' placeholder="enter your name" onkeyup="validName()">
+                <span id="name-error"  ></span>
             </div>
             <div class="input-control">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="text"  placeholder="enter your email">
-                <div class="error"></div>
+                <input id="email" name="email" type="text" class='form-control' placeholder="enter your email" onkeyup="validEmail()">
+                <span id="email-error"></span>
             </div>
             <div class="input-control">
                 <label for="password">Password</label>
-                <input id="password1"name="password1" type="password"  placeholder="enter your password ">
-                <div class="error"></div>
+                <input id="password1"name="password1" type="password"  class='form-control' placeholder="enter your password" onkeyup="validPassword1()">
+                <span id="password1-error"></span>
             </div>
             <div class="input-control">
                 <label for="password2">Password again</label>
-                <input id="password2"name="password2" type="password"  placeholder="confirm your password">
-                <div class="error"></div>
+                <input id="password2"name="password2" type="password" class='form-control'  placeholder="confirm your password" onkeyup="validPassword2()">
+                <span id="password2-error"></span>
             </div>
-            <button type="submit" name="submit">Sign Up</button>
+            <button type='submit' id='register' name='register' class="d-none" >Sign Up</button>
+           
+            <button type="button"  onclick=" validateForm()" >Sign Up</button>
         </form>
     </div>
+    <script src="assets/js/script.js"></script>
+
 </body>
 </html>
