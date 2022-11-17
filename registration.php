@@ -69,37 +69,39 @@ if(isset($_POST['submit'])){
 </body>
 </html>-->
 <?php
-include 'config.php';
+    include 'config.php';
+    include 'session.php';
+
 session_start();
 
-if(isset($_POST['register'])){
-    $name=mysqli_real_escape_string($conn,$_POST['name']);//echape caractere spaciaux
-    $email=mysqli_real_escape_string($conn,$_POST['email']);//echape caractere spaciaux
-    $password1=$_POST['password1'];
-    $hashed_password1=password_hash($password1,PASSWORD_DEFAULT);
-    $password2=$_POST['password2'];//echape caractere spaciaux
-    $hashed_password2=password_hash($password2,PASSWORD_DEFAULT);
-    
-    $sql="select * from user where email='$email' && password='$hashed_password1'";
-    $result=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($result)>0){
-        $error[]='user already exist !! ';
-    }else{
-        if($password1!=$password2){
-            $error[]='password not matched';
+    if(isset($_POST['register'])){
+        $name=mysqli_real_escape_string($conn,$_POST['name']);
+        $email=mysqli_real_escape_string($conn,$_POST['email']);
+        $password1=$_POST['password1'];
+        $hashed_password1=password_hash($password1,PASSWORD_BCRYPT);
+        $password2=$_POST['password2'];
+        $hashed_password2=password_hash($password2,PASSWORD_BCRYPT);
+        
+        $sql="select * from user where email='$email' && password='$hashed_password1'";
+        $result=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result)>0){
+            $error[]='user already exist !! ';
         }else{
-            // $insertQuery="insert into user(name,email,password1)values('$name','$email','$password1')";
-            $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
-            mysqli_query($conn,$insertQuery);
-            header('location:signup.php');
+            if($password1!=$password2){
+                $error[]='password not matched';
+            }else{
+                $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
+                mysqli_query($conn,$insertQuery);
+                header('location:signup.php');
+            }
         }
-    }
-};
+    };
 
 
 
 
 ?>
+<!--  -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -117,14 +119,6 @@ if(isset($_POST['register'])){
     <div class="container">
         <form id="form"  method="Post"  action="">
             <h1>Registration</h1>
-            <?php
-            if(isset($error)){
-                foreach($error as $error){
-                    echo '<span class="error-mgs">'.$error.'</span>';
-                }
-            }  
-
-            ?>
             <div class="input-control  ">
                 <label for="username">Username</label>
                 <input  id="name" name="name" type="text" class='form-control' placeholder="enter your name" onkeyup="validName()">

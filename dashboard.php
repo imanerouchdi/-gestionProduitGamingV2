@@ -14,14 +14,14 @@
 </head>
 <body>
    
-    <!-- navbar -->
+    <!-- navbar
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <!-- offcanvas trigger -->
+          offcanvas trigger
             <button class="navbar-toggler me-2" type="button"data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
             </button>
-          <!-- offcanvas trigger -->
+          offcanvas trigger
             <a class="navbar-brand fw-bold text-uppercase me-auto ms-" href="#">frontend</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" data-bs-target="#navbarSupportedContent"></span>
@@ -50,9 +50,9 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
     <!-- endnavbar -->
-    <!-- offcanvas -->
+    <!-- offcanvas 
     <div class="offcanvas offcanvas-start sidebar-nav bg-dark text-white" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-body text-white">
             <nav class="navbar-dark">
@@ -96,16 +96,16 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div>-->
     <!-- offcanvas -->
-    <!-- main content -->
+    <!-- main content 
     <main class="mt-5-pt-3">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 fw-bold fs-3">Dashboard</div>
             </div>
         </div>
-    </main>
+    </main>-->
     <!-- end main -->
 
 

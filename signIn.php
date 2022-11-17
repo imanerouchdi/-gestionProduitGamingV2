@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="assets/css/styleRegistration.css">
+    <!-- <link rel="stylesheet" href="assets/css/styleRegistration.css"> -->
     
 </head>
 <body>
 
     <div class="global-container h-100 ">
-        <div class="card login-form bg-black">
+        <div class="card login-form ">
             <div class="card-body w-100">
                 <h1 class="card-title text-center ">Registration</h1>
                 <div class="card-text">
