@@ -70,10 +70,10 @@ if(isset($_POST['submit'])){
 </html>-->
 <?php
     include 'config.php';
-    include 'session.php';
+    // include 'session.php';
 
-session_start();
-
+// session_start();
+    session_start();
     if(isset($_POST['register'])){
         $name=mysqli_real_escape_string($conn,$_POST['name']);
         $email=mysqli_real_escape_string($conn,$_POST['email']);
@@ -86,17 +86,18 @@ session_start();
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0){
             $error[]='user already exist !! ';
+            // header(location:)
         }else{
             if($password1!=$password2){
                 $error[]='password not matched';
             }else{
                 $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
                 mysqli_query($conn,$insertQuery);
-                header('location:signup.php');
+                // header('location:signup.php');
             }
         }
     };
-
+session_destroy();
 
 
 

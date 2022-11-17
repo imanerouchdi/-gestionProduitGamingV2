@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css">
+    <title>admin Area</title>
+    <link rel="stylesheet" href="assets/css/bootstrap-337.min.css">
+    <link rel="stylesheet" href="font-awsome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
 </head>
@@ -107,30 +105,21 @@
         </div>
     </main>-->
     <!-- end main -->
+<!-- new front-end -->
+        <div id="wrapper"> <!--wrapper begin -->
+            <?php include("includes/sidebar.php"); ?>
+            <div id="page-wrapper"><!--wrapper page begin -->
+                <div class="container-fluid"><!--container-fluid begin -->
+                    
+                </div><!--container-fluid finish -->
+            </div><!--wrapper page finish  -->
+        </div>
+        <!-- wrapper finish -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- usage icons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- ================== BEGIN core-js ================== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/jQuery/jquery-311.min.js"></script>
+    
+    <script src="assets/js/bootstrap-337.min.js"></script>
     <script src="assets/js/script.js"></script>
 	<!-- ================== END core-js ================== -->
 
