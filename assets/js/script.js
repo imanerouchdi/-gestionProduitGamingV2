@@ -1,6 +1,5 @@
 // variable inputconsole.log("ss");
-const form = document.getElementById('form');
-const username = document.getElementById('name');
+    const username = document.getElementById('name');
     const email = document.getElementById('email');
     const password1 = document.getElementById('password1');
     const password2 = document.getElementById('password2');
@@ -85,33 +84,20 @@ function validPassword2(){
 }
 
 
-// const validateForm = () => {
-   form.AddEventListner('submit',(e)=>{
-        if(validName() ){
-            
-            if(validEmail() ){
-                if(validPassword1()){
-                    if(validPassword2()){
-                       
-                        
-                    } else{
-                        e.preventDefault();
-                        
-                    }
-                }  else{
-                    e.preventDefault();
-                    
-                }
-            } else{
-                e.preventDefault();
+const validateForm = () => {
+   
+if(validName() ){
+    if(validEmail() ){
+        if(validPassword1()){
+            if(validPassword2()){
+                document.getElementById('register').click();
                 
             }
+        } 
+    }
 
+}
+   
+   
 
-        }
-        else{
-            e.preventDefault();
-            
-        }
-   })
-
+};

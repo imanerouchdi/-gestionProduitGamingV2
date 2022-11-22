@@ -1,3 +1,19 @@
+<?php
+    // afficher la somme de prix produit
+        include("config/config.php");
+        
+        mysqli_stat($conn);
+         //SQL SELECT
+        $sql="SELECT sum(prix) as total FROM produits";
+        $result = mysqli_query($conn,$sql);
+        $result = mysqli_fetch_assoc($result);
+        // return $result;
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +41,14 @@
 <div class="content ">
     <div class="row">
         <div class="card">
-            <i class="bi bi-bar-chart-fill text-primary  fa-3x"></i>        
-            <h1>Tailored Jeans</h1>
-            <p class="price">$19.99</p>
+        <i class="bi bi-currency-dollar text-success fa-3x"></i>  
+            <h1>Total Sales</h1>
+            <p class="price"><?=  $result['total']?>$</p> 
+            
             <p>Some text about the jeans..</p>
             <p><button>Add to Cart</button></p>
         </div>
-        
+
         <div class="card">
             <i class="bi bi-bar-chart-fill text-primary  fa-3x"></i>        
             <h1>Tailored Jeans</h1>

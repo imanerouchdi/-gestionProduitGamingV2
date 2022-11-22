@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             }else{
                 $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
                 mysqli_query($conn,$insertQuery);
-                header('location:sidebar.php');
+                header('location:index.php');
             }
         }
     };
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
     
 
    </head>
@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
             </div>     
         </div>-->
 
-
+    <!--
         <div class="container">
         <form id="form"  method="Post"  action="">
             <h1>Registration</h1>
@@ -120,8 +120,42 @@ if(isset($_POST['submit'])){
             <button type="button"  onclick=" validateForm()" >Sign Up</button>
         </form>
     </div>
-    
-            
+-->
+<!--neumorphism-->
+    <div class="container">
+        
+        <div class="form-group">
+        <fieldset>
+            <label class="form-label mt-4" for="readOnlyInput">Readonly input</label>
+            <input class="form-control" id="readOnlyInput" type="text" placeholder="Readonly input here..." readonly="">
+        </fieldset>
+        </div>
+        <div class="form-group has-success">
+        <label class="form-label mt-4" for="inputValid">Valid input</label>
+        <input type="text" value="correct value" class="form-control is-valid" id="inputValid">
+        <div class="valid-feedback">Success! You've done it.</div>
+        </div>
+        <div class="form-group has-danger">
+        <label class="form-label mt-4" for="inputInvalid">Invalid input</label>
+        <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
+        <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
+        </div>
+        <div class="form-group">
+        <label class="col-form-label col-form-label-lg mt-4" for="inputLarge">Large input</label>
+        <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="inputLarge">
+        </div>
+        <div class="form-group">
+        <label class="form-label mt-4">Floating labels</label>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        </div>
+    </div>                
  <script src="assets/js/script.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 

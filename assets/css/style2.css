@@ -1,36 +1,60 @@
-/* *{
-    margin: 0;
-    padding: 0;
+body, html {
+    height: 100%;
+  }
+  
+  * {
     box-sizing: border-box;
-}
-body{
-    height: 350vh;
-}
-.navbar{
-    
-    background-image: -webkit-linear-gradient(89deg, #5f16a9 0%, #cf15f8 100%);
-    /* background: linear-gradient(to right,#35345E,#00008B);melange de color (dirction,colors:color1-color) itijahat alwan +color libgiti tkhalat bihom */
-    /* clip-path: polygon(6% 0, 100% 0%, 94% 100%, 0% 100%); */
-    /* position: relative; */
-    /* width: 100%; */
-    /* margin: 0 100px;   */
-/* } */
-/* .con{
-   
-    height: 100vh; 
-    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5)),url(../image/bg.jpg);
-    background-size: cover;
+  }
+  
+  .bg-img {
+    /* The image used */
+    background-image: url("a.jpg");
+  
+    /* Control the height of the image */
+    min-height: 380px;
+  
+    /* Center and scale the image nicely */
     background-position: center;
-
-    
-}
-.container-fluid{
-    margin-left:100px ;
-
-    
-}
-.container-fluid a{
-    color: aliceblue;
-} */
-
- 
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  /* Add styles to the form container */
+  .container {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
