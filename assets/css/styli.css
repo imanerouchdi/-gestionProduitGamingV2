@@ -150,7 +150,17 @@ body,html{
   
   tr:nth-child(even){background-color: #f2f2f2}
 
+.body_up{
+  background-color: linear-gradient(to right, #014871 ,#D7EDE2 );
+  /* display: none; */
 
+}
+
+
+
+  
+ 
+  
 
 
 

@@ -8,7 +8,10 @@
         $result = mysqli_query($conn,$sql);
         $result = mysqli_fetch_assoc($result);
         // return $result;
-
+      // afficher total de produit
+      $sql_produit="SELECT COUNT(`id`) as totalproduit FROM `produits`";
+      $statement=mysqli_query($conn,$sql_produit);
+      $statement=mysqli_fetch_assoc($statement);
 
 
 
@@ -28,35 +31,23 @@
    
 </head>
 <body>
-    
-<button class="navbar-toggler d-flex" type="button"data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-         
-            <a class="navbar-brand fw-bold text-uppercase me-auto ms-" href="#">frontend</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" data-bs-target="#navbarSupportedContent"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              
-    <div class="sidebar  " id="collapseExample">
-          <a class="active" href="index.php">Home</a>
-      <a href="#news">Categories</a>
-      <a href="#contact">Product</a>
-      <a href="#about">LogOut</a>
-      </div>
-          </div>
+    <!-- Page content -->
+    <div class="content ">
+      <div class="row">
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-green alert-dismissible fade show">
+              <strong>Success!</strong>
+              <?php 
+                echo $_SESSION['message']; 
+                unset($_SESSION['message']);// vide session apres load page
+              ?>
+          <?php endif ?>
 
-
-
-<!-- Page content -->
-<div class="content ">
-  <div class="row">
-  <div class="card">
+      <div class="card">
             <i class="bi bi-bar-chart-fill text-primary  fa-3x"></i>        
-            <h1>Tailored Jeans</h1>
-            <p class="price">$19.99</p>
-            <p>Some text about the jeans..</p>
+            <h1>Product Count</h1>
+            
+            <p><?= $statement['totalproduit']?> Product</p>
             <p><button>Add to Cart</button></p>
         </div>
         <div class="card">
@@ -82,6 +73,7 @@
             <p><button>Add to Cart</button></p>
         </div>
     </div>
+
     <div class="row>">
         <h2>Responsive Table</h2>
         <p>If you have a table that is too wide, you can add a container element with overflow-x:auto around the table, and it will display a horizontal scroll bar when needed.</p>
@@ -93,7 +85,7 @@
 
         mysqli_stat($conn);
          //SQL SELECT
-        $sql="SELECT id,nom,categories.name  as type ,prix,quantite FROM `produits` INNER JOIN categories on produits.id_categorie=categories.id_cat order by prix";
+        $sql="SELECT id,nom,categories.name  as type ,prix,quantite FROM `produits` INNER JOIN categories on produits.id_categorie=categories.id_cat ";
         $result = mysqli_query($conn,$sql);
         
         //   return $result;
@@ -125,7 +117,7 @@
       <td><?= $produits['type']?></td>
       <td><?= $produits['prix']?></td>
       <td><?= $produits['quantite']?></td>
-      <td><a href="updateproduits.php?id=<?php $produits['id'] ?>" ><button type="button" class="btn btn-outline-primary">Update</a>
+      <td><a href="updateproduits.php?id=<?= $produits['id'] ?>" ><button type="button" class="btn btn-outline-primary">Update</a>
       </button>
       <!-- <button type="button" class="btn btn-outline-danger">Delete -->
       <!-- <a href="updateproduits.php?id=<?php echo $produits['id']?>" > -->

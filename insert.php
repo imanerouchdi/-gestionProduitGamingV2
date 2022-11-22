@@ -3,11 +3,6 @@
         //  include("sidem.php");
         include('functions/update.php');
 
-        // get data
-        $id=$_GET['id'];
-        // if(isset($_GET['id'])){
-        
-        // var_dump($result);
         
         
 ?>
@@ -26,10 +21,9 @@
 </head>
 <body class="body_up" id=>
     <div class="container border border- border-3 mt-5 ">
-        <form method="POST" action="functions/script.php" id="form" class="col-lg-8 col-md-6 col-sm-12 mx-auto">
+        <form method="POST" action="functions/script.php.php" id="form" class="col-lg-8 col-md-6 col-sm-12 mx-auto">
             <?php
-                $result_edit=EditProduit($id);
-                $update_produit=mysqli_fetch_assoc($result_edit);
+                $result=
                 
             
             ?>
