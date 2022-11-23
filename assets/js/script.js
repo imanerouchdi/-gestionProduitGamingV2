@@ -17,14 +17,20 @@ function validName(){
     if(username.value.length==0){
         nameError.innerHTML ='name is required';
         document.getElementById('name').classList.remove('is-valid');
+         document.getElementById('name').classList.add('is-invalid');
+
         return false;
     }
     if(!username.value.match(re)){
         nameError.innerHTML='not valid';
         document.getElementById('name').classList.remove('is-valid');
+        username.classList.add('is-invalid');
+
         return false;
     }
     document.getElementById('name').classList.add('is-valid');
+    password2.classList.remove('is-invalid');
+
     nameError.innerHTML='';
     return true;
 }
@@ -82,23 +88,24 @@ function validPassword2(){
 
 
 }
-
-
 const validateForm = () => {
-   
-if(validName() ){
-    if(validEmail() ){
-        if(validPassword1()){
-            if(validPassword2()){
-                document.getElementById('register').click();
-                
-            }
-        } 
+
+    if(validName() ){
+        if(validEmail() ){
+            if(validPassword1()){
+                if(validPassword2()){
+                    document.getElementById('register').click();
+                    
+                }
+            } 
+        }
     }
-
-}
-   
-   
-
 };
 
+// const validsignin(){
+//     if(validEmail()){
+//         if(validPassword1()){
+//             document.getElementById('signin').click();
+//         }
+//     }
+// }

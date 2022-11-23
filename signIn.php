@@ -1,20 +1,66 @@
-<?PHP
-include("config/config.php");
+<?php 
+    include 'config/config.php';
+    // global $conn;
+        // if(isset($_POST['signin'])){
+        //      $email      =$_POST['email'];
+        // $password   =$_POST['password1'];
+        // $sql ="SELECT * FROM `user` WHERE `email` ='$email' and `password`='$password' ";
+        // $result=mysqli_query($conn,$sql);var_dump($result);
+        // if(!empty($email) || !empty($password) ){
+        //     if($result){
+        //         if( mysqli_num_rows($result)>0){
+        //             $row=mysqli_fetch_assoc($result);
+        //             $pass_verify=password_verify($password,$row);
+        //             var_dump($pass_verify);
+        //             if($pass_verify){
+        //                 $_SESSION['id']=$row['id'];
+        //                 $_SESSION['email']=$row['email'];
+        //                 $_SESSION['name']=$row['name'];
+        //                 header('location:index.php');
+        //             }else{
+        //                     echo 'password error';
+        //             }
+        //         }else echo 'not found';
+        //     }
+        // } else{
+        //     echo " salut";
+        // }
+        // }
+            if(isset($_POST['signin'])){
+                $email=$_POST['email'];
+                $password=$_POST['password'];
+                $sql="select *from user where email='$email' and password='$password'";
+                
+                $result=myqli_query($sql);
+                $row=mysqli_fetch_array($result);
+                // $passv=password_verify($password,$row);
+                if(is_array($row)){
+                    $_SESSION['name']=$row['name'];
+                    
 
-if(isset($_POST['email'])){
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $sql="select * from user where email='$email' and '$password'";
-    $result=mysqli_query($sql,$conn);
-    if(mysqli_num_rows($result)==1){
-        echo"connect has succesfly";
-        header("location:sidem.php");
-    }else{
-        echo "pass word incor";
-    }
-}
+                }else{
+                    echo"<script type=text/javascript>
+                        alert('usr name invalide');
+                        windows.location.href='registration.php';
+                    </script>";
+                }  
+                if(isset($_POST['name']))   {
+                    header("location:index.php");
+                }       
+
+        }
 
 
+
+
+
+
+
+
+
+
+
+       
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,35 +69,38 @@ if(isset($_POST['email'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="bootstrap-opc.css"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="assets/css/style2.css">
-    
+    <script src="https://kit.fontawesome.com/0abe3e5cf3.js" crossorigin="anonymous"></>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/styli.css">
 </head>
-<body>
-<div class="bg-img">
-  <form action="/sidem.php" class="container" method="POST">
-    <h1>Login</h1>
+<body class="bg">
+   <div class="div d-flex justify-content-center align-content-center pt-5 ">
+    <div class="img col-lg-4  col-sm-12 ">
+    <div class="container col-lg-12  mt-5 pb-4  ">
+        <form method="POST"id="form" class="col-lg-10 col-md-10 col-sm-12 mx-auto rounded-pill h-50">
+            <h1 class="fst-italic fs-4 text-center "> Sign In</h1>
+            <div class="form-group has-success ">
+                <label class="form-label mt-4" for="inputDefault">Email</label>
+                <input type="text"  class="form-control " id="email" name="email">
+            </div>
+            <div class="form-group has-success ">
+                <label class="form-label mt-4" for="inputDefault">Password</label>
+                <input type="password"  class="form-control " id="password1"  name="password1">
+            </div>
+            <div class="d-flex justify-content-end mt-1">
+              <span class="me-5">Dont's have an account ?</span>
+            <a href="registration.php" class="link-danger">Sign up</a>
+            </div>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <button type="submit" class="btn">Login</button>
-  </form>
-</div>
-   
-
-
-
-
-
-    
-<script src="assets/js/script.js"></script>
-<!-- <script src="assets/js/bootstrap.js"></script> -->
+            <button type='submit'  name='signin' class=" btn btn-primary w-100 mt-4"  >Sign In</button>
+            <button type="button" class=" d-none btn btn-primary w-100 mt-4 mb-5"  >Sign In</button> 
+        </div>
+    </form>
+         </div>   
+    </div>        
+    </div>
+ <script src="assets/js/script.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

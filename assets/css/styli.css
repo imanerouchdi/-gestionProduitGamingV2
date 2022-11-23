@@ -149,17 +149,33 @@ body,html{
   }
   
   tr:nth-child(even){background-color: #f2f2f2}
-
-.body_up{
+  
+ .container{
   background-color: linear-gradient(to right, #014871 ,#D7EDE2 );
   /* display: none; */
 
 }
+.bg{
+  background: url(../image/bg-blue.jpg);
+}
+.div{
+  /* background-color: #fff;
+  margin-left: 247px;
+  width: 800px;
+  height: 300px; */
 
+}
+.img{
+  background-color: #fff;
+  /* margin-left: 419px; */
+  /* width: 439px; */
+  box-shadow: 11px 7px 12px #fff;
+  /* margin-top: 80px; */
+  /* height: 600px; */
+  height: auto;
+  border-radius: 8px;
 
-
-  
- 
+}
   
 
 

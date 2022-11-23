@@ -21,14 +21,14 @@ if(isset($_POST['submit'])){
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0){
             $error[]='user already exist !! ';
-            // header(location:)
         }else{
             if($password1!=$password2){
                 $error[]='password not matched';
             }else{
                 $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
                 mysqli_query($conn,$insertQuery);
-                header('location:sidebar.php');
+                
+                header('location:index.php');
             }
         }
     };
@@ -47,77 +47,43 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styli.css">
     
 
    </head>
-<body>
-      
-        <!--<div class="container-fluid">
-            <div class="card">
-                <div class="card_logo"></div>
-                    <div class="card_title">Registration</div>
-                        <form method="post" class="card_form" id="form">
-                            <div class="fields">
-                                <div class="username input-group">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="user" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><rect x="0" y="0" width="30" height="30" fill="none" stroke="none" /><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
-                                    <input  id="name" name="name" type="text" class='form-control' placeholder="enter your name" onkeyup="validName()">
-                                    <span id="name-error"  ></span>
-                                </div>
-                                <div class="email input-group">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"viewBox="0 0 24 24"fill="none"stroke="currentColor" stroke-width="2" stroke-linecap="round"stroke-linejoin="round"class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                        <polyline points="22,6 12,13 2,6"></polyline></svg>
-                                        
-                                        <input id="email" name="email" type="text" class='form-control' placeholder="enter your email" onkeyup="validEmail()">
-                                        <span id="email-error"></span>
-                                </div>
-                                <div class="password1 input-group">
-                                <svg xmlns="http://www.w3.org/2000/svg"width="24"height="24"viewBox="0 0 24 24"fill="none"stroke="currentColor" stroke-width="2"stroke-linecap="round"stroke-linejoin="round"class="feather feather-lock">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                   <input id="password1"name="password1" type="password"  class='form-control' placeholder="enter your password" onkeyup="validPassword1()">
-                                    <span id="password1-error"></span>
-                                </div>
-                                <div class="password2 input-group">
-                                <svg xmlns="http://www.w3.org/2000/svg"width="24"height="24"viewBox="0 0 24 24"fill="none"stroke="currentColor" stroke-width="2"stroke-linecap="round"stroke-linejoin="round"class="feather feather-lock">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><input id="password2"name="password2" type="password" class='form-control'  placeholder="confirm your password" onkeyup="validPassword2()">
-                                            <span id="password2-error"></span>
-                                    </div>
-                                    <button type='submit' id='register' name='register' class="d-none" >Sign Up</button>
-                                    <button type="button"  onclick=" validateForm()" >Sign Up</button>
-                            </div>
-                        </form>
-           
-            </div>     
-        </div>-->
-
-
+<body class="bg">
+    <div class="div d-flex justify-content-center align-content-center pt-5 ">
+        <div class="img col-lg-4  col-sm-12 ">
+        <div class="container col-lg-12  mt-5 pb-4  ">     
         <div class="container">
-        <form id="form"  method="Post"  action="">
-            <h1>Registration</h1>
-            <div class="input-control  ">
-                <label for="username">Username</label>
+        <form id="form"  method="Post"  action="" class="col-lg-10 col-md-10 col-sm-12 mx-auto rounded-pill h-50">
+            <h1 class="fst-italic fs-4 text-center ">Registration</h1>
+            <div class="form-group has-success ">
+            <label class="form-label mt-4" for="inputDefault">Username</label>
                 <input  id="name" name="name" type="text" class='form-control' placeholder="enter your name" onkeyup="validName()">
                 <span id="name-error"  ></span>
             </div>
-            <div class="input-control">
-                <label for="email">Email</label>
+            <div class="form-group has-success ">
+            <label class="form-label mt-4" for="inputDefault">Email</label>
                 <input id="email" name="email" type="text" class='form-control' placeholder="enter your email" onkeyup="validEmail()">
                 <span id="email-error"></span>
             </div>
-            <div class="input-control">
-                <label for="password">Password</label>
+            <div class="form-group has-success ">
+            <label class="form-label mt-4" for="inputDefault">Password</label>
                 <input id="password1"name="password1" type="password"  class='form-control' placeholder="enter your password" onkeyup="validPassword1()">
                 <span id="password1-error"></span>
             </div>
-            <div class="input-control">
-                <label for="password2">Password again</label>
+            <div class="form-group has-success ">
+            <label class="form-label mt-4" for="inputDefault">Password again</label>
                 <input id="password2"name="password2" type="password" class='form-control'  placeholder="confirm your password" onkeyup="validPassword2()">
                 <span id="password2-error"></span>
             </div>
-            <button type='submit' id='register' name='register' class="d-none" >Sign Up</button>
-           
-            <button type="button"  onclick=" validateForm()" >Sign Up</button>
+            <button type='submit' id='register' name='register' class=" btn btn-primary w-100 mt-4" onclick= validateForm()  >Sign Up</button>
+            <!-- <button type="button" class="btn btn-primary w-100 mt-4 mb-5"  >Sign Up</button> -->
+            <div class="d-flex justify-content-end mt-2">
+              <span class="me-1">Already have an account?</span>
+            <a href="signin.php" class="link-danger">Sign in</a>
+            </div>
         </form>
     </div>
     
