@@ -28,11 +28,11 @@ if(isset($_POST['submit'])){
                 $insertQuery= "INSERT INTO `user`( `name`, `email`, `password`) VALUES ('$name','$email','$hashed_password1')";
                 mysqli_query($conn,$insertQuery);
                 
-                header('location:index.php');
+                header('location:signin.php');
             }
         }
     };
-// session_destroy();
+
 
 
 
@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
                 <span id="password1-error"></span>
             </div>
             <div class="form-group has-success ">
-            <label class="form-label mt-4" for="inputDefault">Password again</label>
+            <label class="form-label mt-4" for="inputDefault">Confirme your password </label>
                 <input id="password2"name="password2" type="password" class='form-control'  placeholder="confirm your password" onkeyup="validPassword2()">
                 <span id="password2-error"></span>
             </div>

@@ -16,21 +16,18 @@ function validName(){
 
     if(username.value.length==0){
         nameError.innerHTML ='name is required';
-        document.getElementById('name').classList.remove('is-valid');
-         document.getElementById('name').classList.add('is-invalid');
-
+        nameError.style.color = "#ff0000";
+        document.getElementById('name').classList.add('is-valid');
         return false;
     }
     if(!username.value.match(re)){
         nameError.innerHTML='not valid';
         document.getElementById('name').classList.remove('is-valid');
         username.classList.add('is-invalid');
-
         return false;
     }
     document.getElementById('name').classList.add('is-valid');
-    password2.classList.remove('is-invalid');
-
+    username.classList.remove('is-invalid');
     nameError.innerHTML='';
     return true;
 }
@@ -38,15 +35,19 @@ function validEmail(){
     const RegEmail= /^([a-z\d\.-]+)@([a-z\d-]+).([a-z]{2,8})(\.[a-z]{2,8})?$/;
     if(email.value.length==0){
         emailError.innerHTML='should to write your email';
+        emailError.style.color = "#ff0000";
         document.getElementById('email').classList.remove('is-valid');
+        emailError.classList.add('is invalid');
         return false;
     }
     if(!email.value.match(RegEmail)){
-        emailError.innerHTML='not valid';
+        emailError.innerHTML=' email invalid Format';
         document.getElementById('email').classList.remove('is-valid');
+        emailError.classList.add('is-invalid');
         return false;
     }
     document.getElementById('email').classList.add('is-valid');
+    emailError.classList.remove('is-invalid');
     emailError.innerHTML='';
     return true;
 }
@@ -55,6 +56,8 @@ function validPassword1(){
 
     const RegPassword=/^[\w@-]{8,20}$/ ;
     if(password1.value.length==0){
+
+        passwordError1.style.color = "#ff0000";
         passwordError1.innerHTML='should to write your password';
         document.getElementById('password1').classList.remove('is-valid');
         return false;
@@ -70,6 +73,7 @@ function validPassword1(){
 }
 function validPassword2(){
     if(password2.value.length==0) {
+        passwordError2.style.color = "#ff0000";
         passwordError2.innerHTML='please confirm your pasword';
         document.getElementById('password2').classList.remove('is-valid');
         return false;

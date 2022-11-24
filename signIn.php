@@ -28,25 +28,19 @@
         // }
             if(isset($_POST['signin'])){
                 $email=$_POST['email'];
-                $password=$_POST['password'];
-                $sql="select *from user where email='$email' and password='$password'";
+                $password=$_POST['password1'];
+                $sql="select *from user where email='$email' ";
                 
-                $result=myqli_query($sql);
-                $row=mysqli_fetch_array($result);
-                // $passv=password_verify($password,$row);
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+                var_dump($row);
+                $passv=password_verify($password,$row['password']);
+                var_dump($passv);
                 if(is_array($row)){
-                    $_SESSION['name']=$row['name'];
-                    
+                     $_SESSION['name']=$row['name'];
+                        // var_dump($row['name']);
+                     }
 
-                }else{
-                    echo"<script type=text/javascript>
-                        alert('usr name invalide');
-                        windows.location.href='registration.php';
-                    </script>";
-                }  
-                if(isset($_POST['name']))   {
-                    header("location:index.php");
-                }       
 
         }
 
@@ -70,7 +64,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/0abe3e5cf3.js" crossorigin="anonymous"></>
+    <script src="https://kit.fontawesome.com/0abe3e5cf3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/styli.css">
 </head>
