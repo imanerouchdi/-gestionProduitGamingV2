@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'config/config.php';
     // global $conn;
         // if(isset($_POST['signin'])){
@@ -38,19 +39,10 @@
                 var_dump($passv);
                 if(is_array($row)){
                      $_SESSION['name']=$row['name'];
+                     header('location:index.php');
                         // var_dump($row['name']);
                      }
-
-
         }
-
-
-
-
-
-
-
-
 
 
 

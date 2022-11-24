@@ -1,15 +1,24 @@
 <?php
     // afficher la somme de prix produit
-      session_start();
+      // session_start();
+      
         include("config/config.php");
+        include("functions/script.php");
+        check();
         mysqli_stat($conn);
-        $sql="SELECT sum(prix) as total FROM produits";
-        $result = mysqli_query($conn,$sql);
-        $result = mysqli_fetch_assoc($result);
+        // afficher total de prix produit
+        $sql_prix="SELECT sum(prix) as total FROM produits";
+        $result = mysqli_query($conn,$sql_prix);
+        $result_prix = mysqli_fetch_assoc($result);
       // afficher total de produit
       $sql_produit="SELECT COUNT(`id`) as totalproduit FROM `produits`";
       $statement=mysqli_query($conn,$sql_produit);
       $statement=mysqli_fetch_assoc($statement);
+      // afficher total de quantities
+      $sql_qt="SELECT SUM(quantite)as totalquantite FROM produits";
+      $rows_qt=mysqli_query($conn,$sql_qt);
+      $result_qt=mysqli_fetch_assoc($rows_qt);
+      
 
 
 
@@ -40,10 +49,10 @@
             <span class="links_name">Dashboard</span>
           </a>
         </li>
-        <li class="log_out">
-          <a href="#">
+        <li class="log_out" name="logout">
+          <a href="logout.php">
             <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
+            <span class="links_name" >Log out</span>
           </a>
         </li>
       </ul>
@@ -58,59 +67,54 @@
         <input type="text" placeholder="Search...">
         <i class='bx bx-search' ></i>
       </div>
-      <div class="profile-details">
-        <!--<img src="images/profile.jpg" alt="">-->
-        <span class="admin_name">Prem Shahi</span>
-        <i class='bx bx-chevron-down' ></i>
-      </div>
     </nav>
 
         <div class="home-content">
             <div class="overview-boxes">
                 <div class="box">
                 <div class="right-side">
-                    <div class="box-topic">Product Count</div>
+                    <div class="box-topic">Total Product </div>
                     <div class="number"><?= $statement['totalproduit']?></div>
                     <div class="indicator">
-                    <i class='bx bx-up-arrow-alt'></i>
-                    <span class="text">Up from yesterday</span>
+                    <!-- <i class='bx bx-up-arrow-alt'></i> -->
+                    <!-- <span class="text">Up from yesterday</span> -->
                     </div>
                 </div>
                 <i class='bx bx-cart-alt cart'></i>
                 </div>
                 <div class="box">
                 <div class="right-side">
-                    <div class="box-topic">Total Sales</div>
-                    <div class="number"><?=  $result['total']?></div>
+                    <div class="box-topic">Total Price</div>
+                    <div class="number"><?=  $result_prix['total']?></div>
                     <div class="indicator">
-                    <i class='bx bx-up-arrow-alt'></i>
-                    <span class="text">Up from yesterday</span>
+                    <!-- <i class='bx bx-up-arrow-alt'></i> -->
+                    <!-- <span class="text">Up from yesterday</span> -->
                     </div>
                 </div>
-                <i class='bx bxs-cart-add cart two' ></i>
+                <i class='bi bi-currency-dollar  cart two' ></i>
                 </div>
                 <div class="box">
                 <div class="right-side">
-                    <div class="box-topic">Total Profit</div>
-                    <div class="number">$12,876</div>
+                    <div class="box-topic">Total Quatities</div>
+                    <div class="number"><?= $result_qt['totalquantite']?></div>
                     <div class="indicator">
-                    <i class='bx bx-up-arrow-alt'></i>
-                    <span class="text">Up from yesterday</span>
+                    <!-- <i class='bx bx-up-arrow-alt'></i> -->
+                    <!-- <span class="text"> from yesterday</span> -->
                     </div>
                 </div>
-                <i class='bx bx-cart cart three' ></i>
+                <i class='bx bxs-cart-add cart tree' ></i>
                 </div>
-                <div class="box">
+                <!-- <div class="box">
                 <div class="right-side">
-                    <div class="box-topic">Total Return</div>
+                    <div class="box-topic">Total Categorie</div>
                     <div class="number">11,086</div>
                     <div class="indicator">
-                    <i class='bx bx-down-arrow-alt down'></i>
-                    <span class="text">Down From Today</span>
+                        <i class='bx bx-down-arrow-alt down'></i> 
+                        <span class="text">Down From Today</span> 
                     </div>
                 </div>
                 <i class='bx bxs-cart-download cart four' ></i>
-            </div>
+            </div> -->
         </div>
      
     <div style="overflow-x:auto;">
@@ -175,10 +179,24 @@
                 </div>
             </div>
 
-        <!-- <div class="top-sales box">
-          <div class="title">Top Seling Product</div>
-            <ul class="top-sales-details">          
-        </div> -->
+        <div class="top-sales box">
+            <!-- <div class="title">Top Seling Product</div> -->
+              <!-- <ul class="top-sales-details"> -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                  <div class=" w-100 mb-5">
+                    
+                    <h1 class="fs-2 ms-1  "> <img src="assets/image/femelle.png" style="width:50px" class="me-3"><?= $_SESSION['name'] ?></h1>
+                    <p class=" fw-bold text-secondary" >Welcome in your Dashboard</p>
+                    <p> Admin :
+                      <?php
+                        echo $_SESSION['name'];
+                      ?>
+                    </p>
+                    
+                  </div>
+
+              <!-- </ul>         -->
+            <!-- </div> -->
         </div>
     </div>
 </section>

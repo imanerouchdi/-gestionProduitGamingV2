@@ -274,7 +274,7 @@ nav .profile-details i{
   justify-content: space-between;
 }
 .sales-boxes .box .title{
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 500;
   display: flex;
   justify-content: space-between;
@@ -315,12 +315,13 @@ nav .profile-details i{
 
 /* Right box */
 .home-content .sales-boxes .top-sales{
-  width: 35%;
+  width: 25%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px 0 0;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 40vh;
 }
 .sales-boxes .top-sales li{
   display: flex;
@@ -384,6 +385,7 @@ nav .profile-details i{
   }
   .home-content .sales-boxes .top-sales{
     margin: 0;
+    display: none;
   }
 }
 @media (max-width: 1000px) {
@@ -492,4 +494,39 @@ nav .profile-details i{
 #form select{
   width: 749px;
   height: 62px;
+}
+/*  profil */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
 }

@@ -157,14 +157,17 @@ body,html{
 }
 .bg{
   background: url(../image/bg-blue.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
-.div{
+/* .div{
   /* background-color: #fff;
   margin-left: 247px;
   width: 800px;
-  height: 300px; */
+  height: 300px; 
 
-}
+} */
 .img{
   background-color: #fff;
   /* margin-left: 419px; */

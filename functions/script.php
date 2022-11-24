@@ -5,10 +5,16 @@ $id=$_GET['id'] ?? '';
     if(isset($_POST['update']))      updateProduit();
     if(isset($_POST['insert']))        saveProduit();
     if(isset($_GET['id']))             deleteproduit($id);
-    if(isset($_POST['signin']))         signIn();
+
+    // if(isset($_POST['signin']))         signIn();
 
 
-  
+            // function check is admin 
+            function check(){
+                if($_SESSION['name']==''){
+                    header('location: signin.php');
+                }
+            }
 
     function saveProduit()
     {
